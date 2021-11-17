@@ -5,7 +5,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS=False
     SECRET_KEY = 'choomba'
-    UPLOADED_PHOTOS_DEST = 'app/static/photos' #we will store our photos in the static file since it is not advisable to that in the db
+    UPLOADED_PHOTOS_DEST = 'app/static/photos' #we will store our photos in the static file since it is not advisable to do that in the db
 
     # email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
