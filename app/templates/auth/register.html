@@ -1,0 +1,26 @@
+<div class="create">
+    {% extends 'base.html'%}
+    {% import 'bootstrap/wtf.html' as wtf%}
+    
+    {% block styles %}
+            {{ super() }}
+            <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    {% endblock %}
+    
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 left">
+                    <div class="overlay">
+                        <h4>the land of far, far away</h4>
+                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae, autem.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">    
+                        {{wtf.quick_form(form)}}    
+                </div>
+            </div>
+        </div>
+    
+    {% endblock%}
+    </div>
