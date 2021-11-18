@@ -16,8 +16,8 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
     #simple mde configurations
-    SIMPLEMDE_JS_IIFE = True
-    SIMPLEMDE_USE_CDN = True
+    # SIMPLEMDE_JS_IIFE = True
+    # SIMPLEMDE_USE_CDN = True
 
     @staticmethod
     def init_app(app):
@@ -32,6 +32,7 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI= os.environ.get("DATABASE_URL")
     if SQLALCHEMY_DATABASE_URI and SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
         SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
+    pass
    
 class TestConfig(Config):
     '''
@@ -39,7 +40,8 @@ class TestConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings 
     '''
-    pass
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://kennedy:new@localhost/vertigo'
+
 
 class DevConfig(Config):
     '''
@@ -47,7 +49,9 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://kennedy:new@localhost/vertigo'
+
     DEBUG = True
 
 config_options = {
