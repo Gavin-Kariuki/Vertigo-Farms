@@ -35,14 +35,14 @@ def post(title):
     return render_template('post.html', post = post, form = form, comments = comments)
 
 
-@main.route('/create_blog', methods=['GET', 'POST'])
+@main.route('/create_post', methods=['GET', 'POST'])
 @login_required
 def create_post():
     
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(title = form.title.data, post_content = form.post_content.data, author_id = current_user.id)
+        post = Post(title = form.title.data, item_description = form.item_description.data, author_id = current_user.id)
         db.session.add(post)
         db.session.commit()
 
