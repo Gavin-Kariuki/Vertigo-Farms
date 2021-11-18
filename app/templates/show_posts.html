@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+{% block content %}
+   <div class="container">
+        <div class="col-md-6 mx-auto justify-content-center">
+           <h2>All posts...</h2>
+            {% for post in posts %}
+            <hr>
+              <div class="item">
+                <h4 class='title'>{{ post.title }}</h4>
+                <p> {{ post.post_content | truncate(300)}}</p>   
+                <p>{{ post.author }}</p>  
+                <p> created: {{ post.posted.strftime('%Y-%m-%d') }}</p>               
+
+                {% if current_user.id == post.author.id %}
+                    <a href="{{url_for('main.delete_post',title = post.title)}}" class="btn btn-danger">Delete Post</a> 
+                {% endif %}
+              </div>
+            <hr>            
+            {% endfor %}
+        </div>
+   </div>
+{% endblock %}

@@ -6,9 +6,9 @@
 {% endblock %}
 
 {% block content %}
-    <h3>blog item</h3>
-    {% for blog in blogs %}
-        <p>{{ blog.title }}</p>
+    <h3>post item</h3>
+    {% for post in posts %}
+        <p>{{ post.title }}</p>
         {% if user == current_user %}
             <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
         {% endif %}
