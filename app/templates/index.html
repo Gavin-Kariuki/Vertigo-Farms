@@ -3,75 +3,23 @@
   
   {% block styles %}
       {{ super() }}
-      <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+      <link rel="stylesheet" href="{{url_for('static',filename='css/styles.css')}}">
   {% endblock %}
   
   {% block content %}
-      <div class="intro">
+      <div class="container flex-row">
+        <div class="intro col-6">
           <div class="overlay ">
-              <h2>Time to Get your <br>
-              House, Clean and <br>
-          in order.</h2>
-  
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing 
-              elit. Sed earum, eveniet perspiciatis 
-              incidunt officiis, tenetur ducimus
-               alias temporibus fugiat, voluptates dolor dolorum 
-               modi. Quo dolorem veniam officia tenetur.</p>
-  
-          <a href="{{ url_for('auth.register') }}" class="btn btn-outline-dark">subscribe</a>
-  
+            <h3>Lorem ipsum dolor sit amet 
+              consectetur adipisicing elit. Culpa odio 
+              praesentium doloremque?</h3>  
           </div>
-      </div>
+      </div> 
   
-  
-      <div class="container more">
+      <div class="more col-6">
           <hr>
-          <div class="row d-flex ">
-              <div class="icons col-md-8 d-flex">
-                  <div class="card col-md-6">
-                      <img class="card-img-top" src="https://images.unsplash.com/photo-1575000977355-8b2a719926c9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">let's cook</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam, pariatur?.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-  
-                    <div class="card col-md-6">
-                      <img class="card-img-top" src="https://images.unsplash.com/photo-1449247613801-ab06418e2861?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">to more life: lifestyle</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        <a href="#" class="btn btn-primary">lets go somewhere</a>
-                      </div>
-                    </div>
-  
-                    <div class="card col-md-6">
-                      <img class="card-img-top" src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=821&q=80" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">around the world</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-  
-                    <div class="card col-md-6">
-                      <img class="card-img-top" src="https://images.unsplash.com/photo-1608228088998-57828365d486?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=782&q=80" alt="Card image cap">
-                      <div class="card-body">
-                        <h5 class="card-title">get your fashion in check</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis!</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                      </div>
-                    </div>
-              </div>
-              <div class="quote-section col-md-4">
-                  <div class="quote">
-                      <p>"{{ quote.quote }}"</p>
-                      <h4>author: <i>{{ quote.author }}</i></h4>
-                  </div>
-              </div>
-          </div>
+          <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam eos facere quos repellat! Saepe quaerat dignissimos molestiae itaque numquam officiis earum commodi. Doloremque dicta obcaecati libero assumenda ea odio dolor nisi maiores sapiente, odit modi officia sit similique illo. Suscipit voluptatem corporis voluptate expedita tempora debitis excepturi impedit! Sapiente, quia.</h2>
+      </div>
       </div>
   {% endblock %}
   </div>

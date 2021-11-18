@@ -1,0 +1,19 @@
+.navbar {
+    background-color: transparent;
+    border: none;
+    padding: 0 6rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 2vw;
+    color: black;
+}
+
+.navbar-brand :hover {
+    color: black;
+}
+
+h2 {
+    color: red
+}
