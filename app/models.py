@@ -13,6 +13,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     email = db.Column(db.String(255), index=True, unique=True)
+    location = db.Column(db.String(255))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     comment = db.relationship('Comment', backref='author',lazy='dynamic')
     profile_pic_path = db.Column(db.String())
@@ -51,8 +52,8 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255))
-    post_content = db.Column(db.String())
-    profile_pic_path = db.Column(db.String())
+    post_description = db.Column(db.String())
+    item_price = db.Column(db.String(10))
     posted = db.Column(db.DateTime, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     comments = db.relationship('Comment', backref='post', lazy='dynamic')

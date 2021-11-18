@@ -32,7 +32,7 @@ def post(title):
 
         return redirect(url_for('main.post', title = title))
 
-    return render_template('main.post.html', post = post, form = form, comments = comments)
+    return render_template('post.html', post = post, form = form, comments = comments)
 
 
 @main.route('/create_blog', methods=['GET', 'POST'])

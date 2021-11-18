@@ -4,6 +4,7 @@ class Config:
     '''General configuration class'''
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
     SQLALCHEMY_TRACK_MODIFICATIONS=False
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://kennedy:new@localhost/vertigo'
     SECRET_KEY = 'choomba'
     UPLOADED_PHOTOS_DEST = 'app/static/photos' #we will store our photos in the static file since it is not advisable to do that in the db
 
