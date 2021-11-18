@@ -13,6 +13,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(255))
     pass_secure = db.Column(db.String(255))
     email = db.Column(db.String(255), index=True, unique=True)
+    location = db.Column(db.String(255))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     comment = db.relationship('Comment', backref='author',lazy='dynamic')
     profile_pic_path = db.Column(db.String())
