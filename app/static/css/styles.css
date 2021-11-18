@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Nunito:ital,wght@0,400;0,700;1,200&display=swap');
+
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+
 .navbar {
     background-color: transparent;
     border: none;
@@ -14,6 +22,88 @@
     color: black;
 }
 
-h2 {
-    color: red
+.intro a, .btn-outline-dark {
+    color: whitesmoke;
+    background-color: black;
+    border-radius: 0;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+ 
+.navbar {
+    background-color: transparent;
+    border: none;
+    padding: 0 6rem;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 2vw;
+    color: black;
+}
+
+.navbar-brand :hover {
+    color: black;
+}
+
+body > div > div.navbar.navbar-inverse > div > div.navbar-header > h3 {
+    color: black;
+}
+
+body > div > div.navbar.navbar-inverse > div > div.navbar-collapse.collapse > ul > li> a {
+    color: black;
+}
+
+body > div > div.navbar.navbar-inverse > div > div.navbar-collapse.collapse.in > ul > li > a {
+    color: black;
+}
+
+
+.intro-div {
+    min-width: 90vw;
+    position: relative;
+}
+
+
+.more {
+    display: flex;
+    /* justify-content: center; */
+    /* flex-direction: row; */
+    align-items: center;
+}
+
+.left {
+    min-height: 80vh;   
+    background-image: url(https://images.unsplash.com/photo-1595475207225-428b62bda831?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=580&q=80);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay {
+    position: absolute;
+    height: 60%;
+    width: 65%;
+    background-color: white;
+    top: 4rem;
+    left: 8rem;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    /* box-shadow: -2px 4px 15px -4px rgba(0,0,0,0.75);
+-webkit-box-shadow: -2px 4px 15px -4px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 4px 15px -4px rgba(0,0,0,0.75); */
+
+    box-shadow: -3px 5px 23px -4px rgba(0,0,0,0.47);
+    -webkit-box-shadow: -3px 5px 23px -4px rgba(0,0,0,0.47);
+    -moz-box-shadow: -3px 5px 23px -4px rgba(0,0,0,0.47);
+
 }
