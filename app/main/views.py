@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for, flash, abort
 from . import main
-# from ..email import mail_message
+from ..email import mail_message
 from app import db, photos
 from ..models import Post, Comment, User
 from .forms import CommentForm, PostForm, UpdateProfile
