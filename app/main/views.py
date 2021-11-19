@@ -7,6 +7,9 @@ from .forms import CommentForm, PostForm, UpdateProfile
 from flask_login import login_required, current_user
 
 
+cart_items = []
+
+
 @main.route('/')
 def index():
     '''
@@ -42,7 +45,7 @@ def create_post():
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(title = form.title.data, item_description = form.item_description.data, author_id = current_user.id)
+        post = Post(title = form.title.data, item_description = form.item_description.data,item_price = form.item_price.data, author_id = current_user.id)
         db.session.add(post)
         db.session.commit()
 
@@ -76,7 +79,7 @@ def update_post(title):
 def show_posts():
     posts = Post.query.order_by(Post.posted.desc())
 
-    return render_template('show_posts.html', posts = posts)
+    return render_template('show_posts.html', posts = posts, cart_items = cart_items)
 
 
 @main.route('/post/comment/new/<int:id>', methods=['GET', 'POST'])
@@ -143,5 +146,31 @@ def delete_post(title):
     db.session.commit()
 
     return redirect(url_for('main.show_posts'))
+
+
+    # {% if current_user.id == post.author.id %}
+    #     <a href="{{url_for('main.delete_post',title = post.title)}}" class="btn btn-danger">Delete Post</a> 
+    # {% endif %}
+
+@main.route('/post/cart/<int:id>', methods=['GET', 'POST'])
+@login_required
+def add_to_cart(id):
+    ''''
+    Function that will add items to cart
+    '''
+
+    
+
+    item = Post.query.filter_by(id = id).first()
+    cart_items.append(item)
+    print(cart_items)
+
+    flash('Item added to cart')
+   
+    return redirect(url_for('main.show_posts', cart_items = cart_items))
+
+     
+
+    
 
 
