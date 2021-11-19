@@ -77,9 +77,11 @@ def update_post(title):
 
 @main.route('/posts')
 def show_posts():
+    total = 0
+    for item in cart_items:
+        total += int(item.item_price)
     posts = Post.query.order_by(Post.posted.desc())
-
-    return render_template('show_posts.html', posts = posts, cart_items = cart_items)
+    return render_template('show_posts.html', posts = posts, cart_items = cart_items, total = total)
 
 
 @main.route('/post/comment/new/<int:id>', methods=['GET', 'POST'])
@@ -157,9 +159,7 @@ def delete_post(title):
 def add_to_cart(id):
     ''''
     Function that will add items to cart
-    '''
-
-    
+    '''    
 
     item = Post.query.filter_by(id = id).first()
     cart_items.append(item)

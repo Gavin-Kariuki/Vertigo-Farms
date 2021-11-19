@@ -10,32 +10,32 @@
         <div class="col-md-8 mx-auto justify-content-center">
            <h2>All posts...</h2>
             {% for post in posts %}
-            <hr>
-              <div class="item">
-                <h4 class='title'>{{ post.title }}</h4>
-                <p> {{ post.post_content | truncate(300)}}</p>   
-                <p>{{ post.author }}</p>  
-                <p> created: {{ post.posted.strftime('%Y-%m-%d') }}</p>  
-                <p>{{post.item_price}}</p>             
 
-                {% if current_user.id == post.author.id %}
-                    <a href="{{url_for('main.delete_post',title = post.title)}}" class="btn btn-danger">Delete Post</a> 
-                {% endif %}
-
-                {% if current_user.id == post.author.id %}
-                    <a href="{{url_for('main.add_to_cart',id = post.id)}}" class="btn btn-danger">ADD TO CART</a> 
-                {% endif %}
-              </div>
-            <hr>            
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ post.title }}</h5>
+                    <p class="card-text">{{ post.item_description | truncate(300)}}</p>
+                    <p>{{ post.author }}</p>
+                    {% if current_user.id == post.author.id %}
+                      <a href="{{url_for('main.delete_post',title = post.title)}}" class="btn btn-danger">Delete Post</a> 
+                    {% endif %}
+                    {% if current_user.id == post.author.id %}
+                      <a href="{{url_for('main.add_to_cart',id = post.id)}}" class="btn btn-danger">ADD TO CART</a> 
+                    {% endif %}
+                  </div>
+                </div>
+              </div>          
             {% endfor %}
+
         </div>
         <div class="col-md-4">   
              {% if cart_items %}
-             <h3>Your Cart</h3>
-              {% for item in cart_items %}
-                <h4>{{item.title}}-{{item.item_price}}</h4>
-              {% endfor %}
-              <h5>TOTAL: </h5>
+                <h3>Your Cart</h3>
+                {% for item in cart_items %}
+                  <h4>{{item.title}}-{{item.item_price}}</h4>                   
+                {% endfor %}
+                total: {{ total }}             
              {% endif %}
         </div>
    </div>
