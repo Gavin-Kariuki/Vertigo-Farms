@@ -1,10 +1,13 @@
 from flask import render_template, request, redirect, url_for, flash, abort
 from . import main
-# from ..email import mail_message
+from ..email import mail_message
 from app import db, photos
 from ..models import Post, Comment, User
 from .forms import CommentForm, PostForm, UpdateProfile
 from flask_login import login_required, current_user
+
+
+cart_items = []
 
 
 @main.route('/')
@@ -35,14 +38,14 @@ def post(title):
     return render_template('post.html', post = post, form = form, comments = comments)
 
 
-@main.route('/create_blog', methods=['GET', 'POST'])
+@main.route('/create_post', methods=['GET', 'POST'])
 @login_required
 def create_post():
     
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(title = form.title.data, post_content = form.post_content.data, author_id = current_user.id)
+        post = Post(title = form.title.data, item_description = form.item_description.data,item_price = form.item_price.data, author_id = current_user.id)
         db.session.add(post)
         db.session.commit()
 
@@ -74,9 +77,11 @@ def update_post(title):
 
 @main.route('/posts')
 def show_posts():
+    total = 0
+    for item in cart_items:
+        total += int(item.item_price)
     posts = Post.query.order_by(Post.posted.desc())
-
-    return render_template('show_posts.html', posts = posts)
+    return render_template('show_posts.html', posts = posts, cart_items = cart_items, total = total)
 
 
 @main.route('/post/comment/new/<int:id>', methods=['GET', 'POST'])
@@ -143,5 +148,29 @@ def delete_post(title):
     db.session.commit()
 
     return redirect(url_for('main.show_posts'))
+
+
+    # {% if current_user.id == post.author.id %}
+    #     <a href="{{url_for('main.delete_post',title = post.title)}}" class="btn btn-danger">Delete Post</a> 
+    # {% endif %}
+
+@main.route('/post/cart/<int:id>', methods=['GET', 'POST'])
+@login_required
+def add_to_cart(id):
+    ''''
+    Function that will add items to cart
+    '''    
+
+    item = Post.query.filter_by(id = id).first()
+    cart_items.append(item)
+    print(cart_items)
+
+    flash('Item added to cart')
+   
+    return redirect(url_for('main.show_posts', cart_items = cart_items))
+
+     
+
+    
 
 
